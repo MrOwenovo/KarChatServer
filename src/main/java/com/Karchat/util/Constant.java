@@ -6,7 +6,6 @@ import com.Karchat.util.BeansUtil.KarConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 

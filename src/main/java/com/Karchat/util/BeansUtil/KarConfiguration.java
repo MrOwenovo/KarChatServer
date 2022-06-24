@@ -1,7 +1,6 @@
 package com.Karchat.util.BeansUtil;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
