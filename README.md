@@ -1,84 +1,14 @@
 # 项目简述
-### 三维五子棋客户端，登录注册进去后，有左侧为聊天系统，右侧为三维五子棋（其实是四子棋）的AI，本地，联机以及熄灯玩法，还有普通五子棋的选项。
+### 三维五子棋服务器，运行EchoThreadServer后会打开客户端管理窗口，显示登入的客户端，默认500并发
+### 阿里云服务器ip: 103.46.128.46
+### 阿里云服务器端口:59614
 ---
 
 <br>
 
-# 运行项目配置要求！(运行顺序在后面)：
-### 1.解决SpringBoot启动swingUI界面报错:
->![img.png](src/main/resources/readMe/tip1.png)
-
-<br>
-
->![img.png](src/main/resources/readMe/tip2.png)
-
-<br> 
 
 
->将这里的VM选项填入
-`-Djava.awt.headless=false`
-### 2.解决发送邮件验证码报错(jdk默认关闭SSLv3导致发送失败，取消就好):
-
->找到 jdk->jre/lib/security/java.security
-
-<br>
-
->将第706行：jdk.tls.disabledAlgorithms=SSLv3, DSA, RSA，RC4, DES, MD5withRSA, \ <br>
->改为：jdk.tls.disabledAlgorithms=RC4, DES, MD5withRSA, \
-
-### 3.检查jdk环境和maven环境:
-> ![img.png](src/main/resources/readMe/tip3.png)
->
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip4.png)
-
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip5.png)
-
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip6.png)
-
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip7.png)
-
-
-<br> 
-
-
-
-### 4.如果显示找不到xx包，但是已经通过maven导入:
-> ![img.png](src/main/resources/readMe/tip8.png)
-
-
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip9.png)
-
-
-<br> 
-
-> ![img.png](src/main/resources/readMe/tip10.png)
-
-
----
-# 程序运行顺序：
-> ### 1.运行src/main/java下的com.ZLchat.server.EchoThreadServer.java
-> ### 来启动服务器，当弹出管理用户动态表格即为启动成功。
-
-> #### (如果显示xx端口占用,这里以8080为例:
-> #### 根据端口号查找进程： netstat -aon |findstr 8080
-> #### 杀死该进程: taskkill -f -pid 8080)
-
->### 2.运行src/main/java下的com.ZLchat.ZLChatSpringBootApplication.java
->### 来启动客户端程序，要注意配置好相关依赖和配置。
-
-<br>
-
-# ZLChat项目结构
+# KarGoBangServer项目结构
 ## 数据访问层:dao
 >用于与数据库进行交互，分为
 >- 接口部分: 内含与数据库进行交互的方法，注册为bean
@@ -97,19 +27,6 @@
 
 ---
 
-## 服务层:service
->- 接口部分:
-   >    - BackgroundService: 后台刷新聊天记录/刷新待同意好友邀请列表以及已发送好友邀请列表
->    - ChatService:  完成发送信息/同意好友邀请/拒绝好友邀请/发送好友邀请
->    - InitHomePageService:  初始化客户端主界面,获取用户头像/获取好友头像/获取好友列表/获取所有的好友邀请（已发送和待同意）及其头像/获取好友在线状态/获取好友聊天记录
->    - LoginService:完成登录验证/注册服务/读取保存的账号密码
->    - Minimize:用于实现窗口的最大化最小化动画
->    - Shakeable:用于实现组件的可抖动
->    - ViewServer:视图层服务，展示登录与主界面/客户端出问题时进行加载/服务器断开时进行加载
->- impl:  接口的实现类，通过ioc获取
-
-
-<br>
 
 ---
 
@@ -160,18 +77,8 @@
 
 ---
 
-##视图层:view
->- LoadingHome:登录界面
->- Home: 主界面
->- BlogWindow：博客窗口界面
 
-   <br>
 
----
-##主程序:ZLChatSpringBootApplication
->通过Controller的***start***方法开始
-
-<br>
 
 ---
 
